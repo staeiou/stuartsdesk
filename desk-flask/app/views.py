@@ -7,7 +7,8 @@ from flask import Flask, Response, request, redirect
 
 def index():
 
-    msg_text, msg_date, msg_time = get_message()    
+    # msg_text, msg_date, msg_time = get_message()    
+    msg_text = get_message()
 
     html = """<html><head><meta http-equiv="refresh" content="15" />"""
     html += """<style>
@@ -23,7 +24,7 @@ def index():
     border: 0px
     }
     div.msg {
-    font-size: 50px;
+    font-size: 45px;
     }
     input { font-size:24px }
     </style>"""
@@ -31,18 +32,19 @@ def index():
     # html += """<iframe align="right" src="http://forecast.io/embed/#lat=37.8699&lon=-122.2705&name=Berkeley" width="200" height="200"></iframe>"""
     html += """<div class="msg">"""
     html += msg_text
-    html += """</div><div class="footer">Sent: """
-    html += msg_time
-    html += ", "
-    html += msg_date
-    html += """<form action="/update" method="post"><input type="submit" name="s" value="Press to ask Stuart for an update"></form></div>"""
+
+#    html += """<div class="footer">Sent: """
+#    html += msg_time
+#    html += ", "
+#    html += msg_date
+#    html += """<form action="/update" method="post"><input type="submit" name="s" value="Press to ask Stuart for an update"></form></div>"""
     html += """</div></body></html>"""
 
 
     return html
 
 import pprint
-@app.route('/update', methods=['GET', 'POST'])
+#@app.route('/update', methods=['GET', 'POST'])
 def update():
     #str = pprint.pformat(request.environ, depth=5)
     #return Response(str,mimetype="text/text")
