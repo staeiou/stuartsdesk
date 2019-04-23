@@ -15,7 +15,7 @@ def get_message():
     
     sc = SlackClient(slack_token)
     
-    hist = sc.api_call("conversations.history",channel="DJ0TC5R3Q")
+    hist = sc.api_call("conversations.history",channel=slack_login.channel)
     
     msg = hist['messages'][0]['text']
     
