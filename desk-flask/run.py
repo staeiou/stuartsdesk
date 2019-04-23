@@ -8,9 +8,9 @@ import time
 
 @app.errorhandler(Exception)
 def handle_error(e):
-    print(e)
+#    print(e)
     time.sleep(3)
-    return redirect("http://localhost:5005/")
+    return redirect("http://localhost:5000/")
 
-
-app.run(debug=True, host='127.0.0.1', port=5005)
+if __name__ == '__main__':
+    app.run(debug=True, host='127.0.0.1', port=5000)

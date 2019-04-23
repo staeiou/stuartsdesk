@@ -7,8 +7,8 @@ from flask import Flask, Response, request, redirect
 
 def index():
 
-    # msg_text, msg_date, msg_time = get_message()    
-    msg_text = get_message()
+    msg_text, msg_date, msg_time = get_message()    
+    #msg_text = get_message()
 
     html = """<html><head><meta http-equiv="refresh" content="15" />"""
     html += """<style>
@@ -33,10 +33,10 @@ def index():
     html += """<div class="msg">"""
     html += msg_text
 
-#    html += """<div class="footer">Sent: """
-#    html += msg_time
-#    html += ", "
-#    html += msg_date
+    html += """<div class="footer">Sent: """
+    html += msg_time
+    html += ", "
+    html += msg_date
 #    html += """<form action="/update" method="post"><input type="submit" name="s" value="Press to ask Stuart for an update"></form></div>"""
     html += """</div></body></html>"""
 
