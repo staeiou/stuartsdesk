@@ -23,7 +23,7 @@ def get_message():
     
     msg = hist['messages'][0]['text']
     
-    timestamp = float(hist['messages'][0]['ts'])
+    timestamp = datetime.datetime.fromtimestamp(float(hist['messages'][0]['ts']))
 
     gmt = pytz.timezone('GMT')
     pacific = pytz.timezone('US/Pacific')
@@ -32,9 +32,10 @@ def get_message():
 
     pacific_date  = gmt_date.astimezone(pacific)
     
-    date_formatted = datetime.datetime.fromtimestamp(timestamp).strftime("%a %d %b %Y")
+    date_formatted = pacific_date.strftime("%a %d %b %Y")
     
-    time_formatted = datetime.datetime.fromtimestamp(timestamp).strftime("%I:%M %p")
+    time_formatted = pacific_date.strftime("%I:%M %p")
+
 
 #    print("returning message")
 

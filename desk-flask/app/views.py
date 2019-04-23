@@ -20,11 +20,11 @@ def index():
     bottom: 5px;
     left: 5px;
     width: 470px;
-    height: 70px;
+    height: 30px;
     border: 0px
     }
     div.msg {
-    font-size: 45px;
+    font-size: 55px;
     }
     input { font-size:24px }
     </style>"""
@@ -33,7 +33,7 @@ def index():
     html += """<div class="msg">"""
     html += msg_text
 
-    html += """<div class="footer">Sent: """
+    html += """<br/><br/><div class="footer">Sent: """
     html += msg_time
     html += ", "
     html += msg_date
