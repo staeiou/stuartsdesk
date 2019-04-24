@@ -21,7 +21,13 @@ def get_message():
     
     hist = sc.api_call("conversations.history",channel=slack_login.channel)
     
-    msg = hist['messages'][0]['text']
+    hist_from_self = []
+
+    for msg in hist['messages']:
+        if msg['user'] == slack_login.sender_id:
+            hist_from_self.append(msg)
+
+    msg = hist_from_self[0]['text']
     
     timestamp = datetime.datetime.fromtimestamp(float(hist['messages'][0]['ts']))
 
@@ -36,6 +42,9 @@ def get_message():
     
     time_formatted = pacific_date.strftime("%I:%M %p")
 
+    with open("/home/pi/stuartsdesk/desk-flask/status.txt", "w+") as f:
+        f.write(msg + "\n")
+        f.write("This was last updated at " + time_formatted + ", " + date_formatted)
 
 #    print("returning message")
 

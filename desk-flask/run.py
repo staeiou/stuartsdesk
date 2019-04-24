@@ -8,6 +8,7 @@ import time
 
 @app.errorhandler(Exception)
 def handle_error(e):
+    time.sleep(3)
     print(e)
     time.sleep(3)
     return redirect("http://localhost:5000/")
